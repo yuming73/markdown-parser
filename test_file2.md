@@ -1,1 +1,1 @@
-# [New Test](https://something[].com)
+# [New Test](https://something[]().com)
