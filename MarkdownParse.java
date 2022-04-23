@@ -22,14 +22,14 @@ public class MarkdownParse {
             if(index == closeParen-1) {
                 closeParen = markdown.indexOf(")", closeParen+1);
             }
-            
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
-            
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(openParen - closeBracket == 1) {
+                toReturn.add(markdown.substring(openParen + 1, closeParen));    
+            }
             currentIndex = closeParen + 1;
-            
+
             //System.out.println("currentIndex: " + currentIndex);
             //System.out.println("[indexOf: " + markdown.indexOf("["));
             //System.out.println("]indexOf: " + markdown.indexOf("]", openBracket));
