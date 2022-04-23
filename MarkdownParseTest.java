@@ -24,24 +24,28 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    @Test
     public void testFile1() throws IOException {
         List testList = List.of("https://something[]().com");
         Path fileName = Path.of("test_file1.md");
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    @Test
     public void testFile2() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file2.md");
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    @Test
     public void testFile3() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file3.md");
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    @Test
     public void testFile4() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file4.md");
@@ -49,12 +53,14 @@ public class MarkdownParseTest {
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
     //expected: [], actual: [page.com]
+    @Test
     public void testFile5() throws IOException {
-        List testList = List.of("page.com");
+        List testList = List.of();
         Path fileName = Path.of("test_file5.md");
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    @Test
     public void testFile6() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file6.md");
@@ -62,6 +68,7 @@ public class MarkdownParseTest {
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
     //expected: [], actual: [a link on the first line]
+    @Test
     public void testFile7() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file7.md");
