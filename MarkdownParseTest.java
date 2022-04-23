@@ -42,12 +42,14 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    //expected: [], actual: [page.com]
     public void testFile4() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file4.md");
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    //expected: [], actual: [page.com]
     public void testFile5() throws IOException {
         List testList = List.of("page.com");
         Path fileName = Path.of("test_file5.md");
@@ -60,6 +62,7 @@ public class MarkdownParseTest {
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
     }
+    //expected: [], actual: [a link on the first line]
     public void testFile7() throws IOException {
         List testList = List.of();
         Path fileName = Path.of("test_file7.md");
