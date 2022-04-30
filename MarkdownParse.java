@@ -26,12 +26,12 @@ public class MarkdownParse {
                 break;
             }
             if(markdown.substring(openBracket - 1, openBracket).equals("!")) {
-                toReturn.add("");
+                break;
             }
             if(openParen - closeBracket == 1) {
                 toReturn.add(markdown.substring(openParen + 1, closeParen));   
             }
-            currentIndex = closeParen + 1; 
+            currentIndex = closeParen + 1;
             
 
             //System.out.println("currentIndex: " + currentIndex);
