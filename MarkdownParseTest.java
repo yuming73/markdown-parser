@@ -33,7 +33,7 @@ public class MarkdownParseTest {
     }
     @Test
     public void testFile2() throws IOException {
-        List testList = List.of("hi"); //failed change
+        List testList = List.of();
         Path fileName = Path.of("test_file2.md");
         String content = Files.readString(fileName);
         assertEquals(testList, MarkdownParse.getLinks(content));
