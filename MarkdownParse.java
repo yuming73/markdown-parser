@@ -25,10 +25,14 @@ public class MarkdownParse {
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
-            if(openParen - closeBracket == 1) {
-                toReturn.add(markdown.substring(openParen + 1, closeParen));    
+            if(markdown.substring(openBracket - 1, openBracket).equals("!")) {
+                toReturn.add("");
             }
-            currentIndex = closeParen + 1;
+            if(openParen - closeBracket == 1) {
+                toReturn.add(markdown.substring(openParen + 1, closeParen));   
+            }
+            currentIndex = closeParen + 1; 
+            
 
             //System.out.println("currentIndex: " + currentIndex);
             //System.out.println("[indexOf: " + markdown.indexOf("["));
