@@ -34,6 +34,12 @@ public class MarkdownParse {
                 closeBracket += 2;
             }
 
+            //checks if the parentheses contain spaces
+            if(markdown.substring(openParen, closeParen).contains(" ")) {
+                currentIndex = closeParen + 1;
+                continue;
+            }
+
             //checks if it's an image or if contains backticks
             if(openBracket != 0) {
                 if(markdown.substring(openBracket - 1, openBracket).equals("!") || markdown.substring(openBracket - 1, openBracket).equals("`")) {
@@ -42,11 +48,10 @@ public class MarkdownParse {
                 }
             }
 
-            //checks if it's a valid link before adding to the list
+            //trims the link before adding to the list (remove any spaces)
             if(openParen - closeBracket == 1) {
-                if(markdown.substring(openParen + 1, closeParen).contains(".")) {
-                    toReturn.add(markdown.substring(openParen + 1, closeParen));
-                }   
+                String link = markdown.substring(openParen + 1, closeParen);
+                toReturn.add(link.trim());
             }
             currentIndex = closeParen + 1;
         }
