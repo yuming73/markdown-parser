@@ -18,16 +18,22 @@ public class MarkdownParse {
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
             
+            //checks if the links contains any parentheses
             int index = markdown.indexOf("(", closeParen-1);
             if(index == closeParen-1) {
                 closeParen = markdown.indexOf(")", closeParen+1);
             }
+            //checks if the index is out of bounds
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
-            if(markdown.substring(openBracket - 1, openBracket).equals("!")) {
-                break;
+            //checks if it's an image
+            if(openBracket != 0) {
+                if(markdown.substring(openBracket - 1, openBracket).equals("!")) {
+                    break;
+                }
             }
+            //checks if it's a valid link before adding to the list
             if(openParen - closeBracket == 1) {
                 if(markdown.substring(openParen + 1, closeParen).contains(".")) {
                     toReturn.add(markdown.substring(openParen + 1, closeParen));
