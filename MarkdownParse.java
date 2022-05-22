@@ -23,16 +23,25 @@ public class MarkdownParse {
             if(index == closeParen-1) {
                 closeParen = markdown.indexOf(")", closeParen+1);
             }
+
             //checks if the index is out of bounds
             if(openBracket == -1 || closeBracket == -1 || openParen == -1 || closeParen == -1){
                 break;
             }
-            //checks if it's an image
+            
+            //checks if the brackets contains backticks
+            if(markdown.substring(closeBracket, closeBracket + 2).contains("`")) {
+                closeBracket += 2;
+            }
+
+            //checks if it's an image or if contains backticks
             if(openBracket != 0) {
-                if(markdown.substring(openBracket - 1, openBracket).equals("!")) {
-                    break;
+                if(markdown.substring(openBracket - 1, openBracket).equals("!") || markdown.substring(openBracket - 1, openBracket).equals("`")) {
+                    currentIndex = closeParen + 1;
+                    continue;
                 }
             }
+
             //checks if it's a valid link before adding to the list
             if(openParen - closeBracket == 1) {
                 if(markdown.substring(openParen + 1, closeParen).contains(".")) {
